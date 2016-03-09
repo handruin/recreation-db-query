@@ -1,5 +1,12 @@
 import requests
 
+
+class RIDBUtils(object):
+    def __init__(self):
+        pass
+
+
+
 class RIDBQuery:
     def __init__(self, ridb_config):
         self.config = ridb_config
@@ -16,10 +23,10 @@ class RIDBQuery:
 
 
 class RIDBConfig:
-    def __init__(self, api_loc, api_key, format='.json'):
+    def __init__(self, api_loc, api_key, restformat='.json'):
         self.apiloc = api_loc
         self.key = api_key
-        self.format = format
+        self.format = restformat
 
     @property
     def key(self):
@@ -28,17 +35,3 @@ class RIDBConfig:
     @property
     def location(self):
         return self.apiloc
-
-
-class APIKEY:
-    def __init__(self, file_loc):
-        self.apikey_location = file_loc
-        pass
-
-    @property
-    def key(self):
-        try:
-            with open(self.apikey_location, 'r') as f:
-                return f.readline().strip()
-        except Exception as ex:
-            print("Unable to open key file: ", ex)
